@@ -1,28 +1,29 @@
 <?php
-// ─── ЛОГИКА ───────────────────────────────────────────────
+
 session_start();
-require_once 'db.php';  
-// в db.php мы пропишем подключение к базе данных и функции для работы с пользователями и мероприятиями
+require_once 'config.php';
+
 
 // Проверка авторизации
-$isLoggedIn = isset($_SESSION['user']);
+$isLoggedIn = isLoggedIn();
 
 
 // Имя пользователя (если залогинен)
-$userName = $isLoggedIn ? htmlspecialchars($_SESSION['user']['name']) : '';
+$userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поможем вместе — Платформа добрых дел</title>
-    <link rel="stylesheet" href="../css/style_index.css">
-    <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
-    <link rel="shortcut icon" href="../favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="../favicon/site.webmanifest" />
+    <title>Поможем вместе - Платформа добрых дел</title>
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="style_header_footer.css">
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
     
 </head>
 
@@ -30,15 +31,15 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user']['name']) : '';
 
 <!-- ═══════════ HEADER ═══════════ -->
 <header>
-    <a href="../pages/index.html" class="logo">
+    <a href="index.php" class="logo">
         <div class="logo-icon" >
-                            <img src="../img/log_main.png" alt="Login" width="47" height="47">
+                <img src="img/log_main.png" alt="Login" width="47" height="47">
         </div>
         <span class="logo-text">Поможем<br>вместе</span>
     </a>
 
     <nav>
-        <a href="../pages/events.html">Мероприятия</a>
+        <a href="events.php">Мероприятия</a>
         <a href="volunteers.php">Волонтеры</a>
     </nav>
 
@@ -49,18 +50,18 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user']['name']) : '';
                 <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
         </button>
-<!-- Кнопка профиля для зарегестрированных пользователей -->
-        <!-- <?php if ($isLoggedIn): ?>
-            <a href="profile.php" class="btn-login">
+
+    <?php if ($isLoggedIn): ?>
+            <a href="volunteer/pages/events.html" class="btn-login">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                     <circle cx="12" cy="7" r="4"/>
                 </svg>
                 <?= $userName ?>
-            </a> -->
+            </a> 
         <?php else: ?>
-            <a href="login.php" class="btn-login">
-                <img src="../img/log_main.png" alt="Login" width="20" height="20">
+            <a href="login.php" class="btn-login"> 
+                <img src="img/log_main.png" alt="Login" width="20" height="20">
                 
                 Войти
             </a>
@@ -73,7 +74,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user']['name']) : '';
     <section class="hero">
         <div class="hero-content">
             <h1>ПЛАТФОРМА<br>ДОБРЫХ ДЕЛ</h1>
-            <p>Внеси свой вклад в общее дело</p>
+            <p>внеси свой вклад в общее дело</p>
             <div class="hero-btns">
                 <a href="register-organizer.php" class="btn-outline">Стать организатором</a>
                 <a href="volunteers.php" class="btn-filled">Хочу помочь</a>
@@ -83,13 +84,13 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user']['name']) : '';
         <div class="hero-image">
             <div class="slider">
                 <div class="slide active">
-                    <img src="../img/index-lenta.jpg" alt="Море">
+                    <img src="img/index-lenta.jpg" alt="Море">
                 </div>
                 <div class="slide">
-                    <img src="../img/index-lenta2.jpg" alt="Ветераны">
+                    <img src="img/index-lenta2.jpg" alt="Ветераны">
                 </div>
                 <div class="slide">
-                    <img src="../img/index-lenta3.jpg" alt="Приют">
+                    <img src="img/index-lenta3.jpg" alt="Приют">
                 </div>
             </div>
 
