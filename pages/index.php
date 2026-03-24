@@ -17,13 +17,13 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Поможем вместе - Платформа добрых дел</title>
-    <link rel="stylesheet" href="style_index.css">
-    <link rel="stylesheet" href="style_header_footer.css">
-    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../css/style_index.css">
+    <link rel="stylesheet" href="../css/style_header_footer.css">
+    <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../favicon/site.webmanifest" />
     
 </head>
 
@@ -31,16 +31,16 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 
 <!-- ═══════════ HEADER ═══════════ -->
 <header>
-    <a href="index.php" class="logo">
+    <a href="../pages/index.php" class="logo">
         <div class="logo-icon" >
-                <img src="img/log_main.png" alt="Login" width="47" height="47">
+                <img src="../img/log_main.png" alt="Login" width="47" height="47">
         </div>
         <span class="logo-text">Поможем<br>вместе</span>
     </a>
 
     <nav>
-        <a href="events.php">Мероприятия</a>
-        <a href="volunteers.php">Волонтеры</a>
+        <a href="../pages/events.php">Мероприятия</a>
+        <a href="../pages/volunteers.php">Волонтеры</a>
     </nav>
 
     <div class="header-actions">
@@ -60,8 +60,8 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
                 <?= $userName ?>
             </a> 
         <?php else: ?>
-            <a href="login.php" class="btn-login"> 
-                <img src="img/log_main.png" alt="Login" width="20" height="20">
+            <a href="../pages/login.php" class="btn-login"> 
+                <img src="../img/log_main.png" alt="Login" width="20" height="20">
                 
                 Войти
             </a>
@@ -76,21 +76,21 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
             <h1>ПЛАТФОРМА<br>ДОБРЫХ ДЕЛ</h1>
             <p>внеси свой вклад в общее дело</p>
             <div class="hero-btns">
-                <a href="register-organizer.php" class="btn-outline">Стать организатором</a>
-                <a href="volunteers.php" class="btn-filled">Хочу помочь</a>
+                <a href="../pages/register-organizer.php" class="btn-outline">Стать организатором</a>
+                <a href="../pages/volunteers.php" class="btn-filled">Хочу помочь</a>
             </div>
         </div>
 
         <div class="hero-image">
             <div class="slider">
                 <div class="slide active">
-                    <img src="img/index-lenta.jpg" alt="Море">
+                    <img src="../img/index-lenta.jpg" alt="Море">
                 </div>
                 <div class="slide">
-                    <img src="img/index-lenta2.jpg" alt="Ветераны">
+                    <img src="../img/index-lenta2.jpg" alt="Ветераны">
                 </div>
                 <div class="slide">
-                    <img src="img/index-lenta3.jpg" alt="Приют">
+                    <img src="../img/index-lenta3.jpg" alt="Приют">
                 </div>
             </div>
 
@@ -105,9 +105,9 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
-    <a href="privacy.php">Политика конфиденциальности</a>
-    <a href="terms.php">Политика использования</a>
-    <a href="requisites.php">Реквизиты</a>
+    <a href="../pages/privacy.php">Политика конфиденциальности</a>
+    <a href="../pages/terms.php">Политика использования</a>
+    <a href="../pages/requisites.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 <script>
