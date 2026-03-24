@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель администратора — Поможем вместе</title>
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
-    <a href="index.php" class="admin-logo">
-        <img src="../assets/img/icon/log_main.png" alt="Логотип">
+    <a href="admin_index.php" class="admin-logo">
+        <img src="../img/icon/log_main.png" alt="Логотип">
         <span class="admin-logo-text">Поможем<br>вместе</span>
     </a>
 
