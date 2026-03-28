@@ -2,7 +2,7 @@
 
 session_start();
 require_once 'config.php';
-
+include 'profile.php';
 
 // Проверка авторизации
 $isLoggedIn = isLoggedIn();
@@ -18,6 +18,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Поможем вместе - Платформа добрых дел</title>
     <link rel="stylesheet" href="../css/style_index.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/style_header_footer.css">
     <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
@@ -37,11 +38,10 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
         </div>
         <span class="logo-text">Поможем<br>вместе</span>
     </a>
-
-    <nav>
-        <a href="../pages/events.php">Мероприятия</a>
-        <a href="../pages/volunteers.php">Волонтеры</a>
-    </nav>
+            <nav class="button-header">
+                <a href="../pages/events.php">Мероприятия</a>
+                <a href="../pages/list_of_val.php">Волонтеры</a>
+            </nav>
 
     <div class="header-actions">
         <button class="btn-icon" title="Поиск" onclick="window.location.href='search.php'">
@@ -51,21 +51,20 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
             </svg>
         </button>
 
-    <?php if ($isLoggedIn): ?>
-            <a href="volunteer/pages/events.html" class="btn-login">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
-                <?= $userName ?>
-            </a> 
-        <?php else: ?>
-            <a href="../pages/login.php" class="btn-login"> 
-                <img src="../img/log_main.png" alt="Login" width="20" height="20">
-                
-                Войти
-            </a>
-        <?php endif; ?>
+   <?php if ($isLoggedIn): ?>
+                    <button type="button" class="btn-login" id="profileMenuOpen">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <?= $userName ?>
+                    </button> 
+                <?php else: ?>
+                    <a href="login.php" class="btn-login"> 
+                        <img src="img/log_main.png" alt="Login" width="20" height="20">
+                        Войти
+                    </a>
+                <?php endif; ?>
     </div>
 </header>
 
