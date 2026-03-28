@@ -106,32 +106,35 @@ function formatEventDate(?string $startDate, ?string $endDate): string
     <link rel="stylesheet" href="../css/style_header_footer.css">
     <link rel="stylesheet" href="../css/events.css">
     <link rel="stylesheet" href="../css/profile.css">
+    <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../favicon/site.webmanifest" />
 
 </head>
 <body>
-    <div class="page">
-        <header>
-            <a href="../pages/index.php" class="logo">
-                <div class="logo-icon" >
-                        <img src="../img/log_main.png" alt="Login" width="47" height="47">
-                </div>
-                <span class="logo-text">Поможем<br>вместе</span>
-            </a>
-
-            <nav class="button-header">
-                <a href="../pages/events.php">Мероприятия</a>
-                <a href="../pages/volunteers.php">Волонтеры</a>
-            </nav>
-
-            <div class="header-actions">
-                <button class="btn-icon" title="Поиск" onclick="window.location.href='search.php'">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="7"/>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                    </svg>
-                </button>
-
-            <?php if ($isLoggedIn): ?>
+<div class="page">
+        <!-- ══════════════ HEADER ══════════════ -->
+<header>
+    <a href="../pages/index.php" class="logo">
+        <div class="logo-icon">
+            <img src="../img/log_main.png" alt="Login" width="47" height="47">
+        </div>
+        <span class="logo-text">Поможем<br>вместе</span>
+    </a>
+    <nav class="button-header">
+        <a href="../pages/events.php">Мероприятия</a>
+        <a href="../pages/list_of_val.php">Волонтеры</a>
+    </nav>
+    <div class="header-actions">
+        <button class="btn-icon" title="Поиск" onclick="window.location.href='search.php'">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+        </button>
+       <?php if ($isLoggedIn): ?>
                     <button type="button" class="btn-login" id="profileMenuOpen">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -145,8 +148,9 @@ function formatEventDate(?string $startDate, ?string $endDate): string
                         Войти
                     </a>
                 <?php endif; ?>
-            </div>
-        </header>        
+    </div>
+    </header>
+       
 
         <main class="events-layout">
             <aside class="filters">
