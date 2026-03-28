@@ -1,0 +1,111 @@
+/* style_organizer.css — стили для страниц "Стать организатором" и "Хочу помочь" */
+
+.organizer-page, .help-page {
+    max-width: 980px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.75;
+    color: #333;
+}
+
+.organizer-page h1,
+.help-page h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* Категории */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin: 35px 0;
+}
+
+.category-card {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 22px 18px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+    transform: translateY(-4px);
+}
+
+/* Блок контактов */
+.contact-block {
+    background: #f8f9fa;
+    padding: 35px;
+    border-radius: 16px;
+    margin: 45px 0;
+    text-align: center;
+}
+
+.contact-info {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Страница "Хочу помочь" */
+.help-page .big-text {
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    margin: 25px 0 40px;
+    color: #2c3e50;
+}
+
+.donate-block {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 35px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.donate-block h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #e74c3c;
+}
+
+.note {
+    font-size: 15px;
+    color: #666;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .organizer-page, .help-page {
+        padding: 0 15px;
+    }
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-block {
+        padding: 25px 20px;
+    }
+}
