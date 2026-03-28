@@ -384,14 +384,17 @@ a { text-decoration: none; color: inherit; }
     background: var(--white);
     border: 1px solid var(--gray-border);
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow: hidden;  /* Скрывает переполнение для стиля */
     box-shadow: var(--shadow);
+    position: relative;
 }
 
 .list-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    position: relative;
+    z-index: 1;
 }
 
 .list-table th {
@@ -496,15 +499,13 @@ a { text-decoration: none; color: inherit; }
 
 /* Выпадающее меню */
 .dropdown-menu {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 4px);
+    position: fixed;  /* ВЕРНУЛИ fixed вместо absolute */
     background: var(--white);
     border: 1px solid var(--gray-border);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
     min-width: 180px;
-    z-index: 50;
+    z-index: 10000;  /* Очень высокий z-index */
     display: none;
     overflow: hidden;
 }
@@ -944,4 +945,12 @@ a { text-decoration: none; color: inherit; }
     .form-row { grid-template-columns: 1fr; }
     .list-toolbar { flex-direction: column; align-items: stretch; }
     .shift-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* Для сруглённых углов таблиц*/
+.list-table thead tr:first-child th:first-child {
+    border-radius: var(--radius) 0 0 0;
+}
+.list-table thead tr:first-child th:last-child {
+    border-radius: 0 var(--radius) 0 0;
 }
