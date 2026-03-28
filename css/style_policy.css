@@ -1,35 +1,32 @@
-/* style_policy.css */
-
-/* Основные стили для страницы политики */
 .policy-page {
-    max-width: 900px;
+    max-width: 950px;
     margin: 40px auto;
     padding: 0 20px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #333;
-    font-size: 16px;
+    font-size: 16.5px;
 }
 
 .policy-page h1 {
     font-size: 28px;
-    margin-bottom: 35px;
     text-align: center;
+    margin-bottom: 40px;
     color: #2c3e50;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 3px solid #3498db;
     padding-bottom: 15px;
 }
 
 .policy-page h2 {
-    font-size: 22px;
+    font-size: 23px;
     margin: 45px 0 20px;
     color: #2c3e50;
-    border-left: 5px solid #3498db;
-    padding-left: 15px;
+    border-left: 6px solid #3498db;
+    padding-left: 18px;
 }
 
 .policy-page h3 {
     font-size: 19px;
-    margin: 30px 0 15px;
+    margin: 32px 0 16px;
     color: #34495e;
 }
 
@@ -39,28 +36,28 @@
 }
 
 .policy-page ul {
+    padding-left: 28px;
     margin-bottom: 25px;
-    padding-left: 25px;
 }
 
 .policy-page li {
-    margin-bottom: 10px;
+    margin-bottom: 11px;
 }
 
-/* Таблица целей обработки */
-.policy-table {
+/* Таблицы */
+.policy-table,
+.requisites-page .policy-table {
     width: 100%;
     border-collapse: collapse;
     margin: 25px 0;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 .policy-table th,
 .policy-table td {
-    border: 1px solid #ddd;
-    padding: 14px 16px;
-    text-align: left;
+    border: 1px solid #e0e0e0;
+    padding: 14px 18px;
     vertical-align: top;
 }
 
@@ -68,21 +65,27 @@
     background-color: #f8f9fa;
     font-weight: 600;
     color: #2c3e50;
-    width: 28%;
+    width: 32%;
+    text-align: left;
 }
 
-/* Адаптивность */
+/* Блок реквизитов */
+.requisites-page h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    border-left: none;
+}
+
+.mt-4 {
+    margin-top: 25px;
+}
+
+/* Адаптив */
 @media (max-width: 768px) {
     .policy-page {
         margin: 20px auto;
         padding: 0 15px;
     }
-    
-    .policy-page h1 {
-        font-size: 24px;
-    }
-    
-    .policy-page h2 {
-        font-size: 20px;
-    }
+    .policy-page h1 { font-size: 24px; }
+    .policy-page h2 { font-size: 21px; }
 }
