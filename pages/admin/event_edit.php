@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors['photo'] = 'Файл не должен превышать 5 МБ';
         } else {
             $newName   = uniqid('event_') . '.' . $ext;
-            $uploadDir = __DIR__ . '/../assets/events/';
+            $uploadDir = __DIR__ . '/../events/';
             if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
 
             if (move_uploaded_file($file['tmp_name'], $uploadDir . $newName)) {
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($event['image_path'] && file_exists(__DIR__ . '/../' . $event['image_path'])) {
                     unlink(__DIR__ . '/../' . $event['image_path']);
                 }
-                $imagePath = 'assets/events/' . $newName;
+                $imagePath = '/events/' . $newName;
             } else {
                 $errors['photo'] = 'Не удалось сохранить файл';
             }
@@ -116,13 +116,13 @@ $categories = $db->query("SELECT id, name FROM event_categories ORDER BY name")-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактировать мероприятие — Администратор</title>
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
     <a href="index.php" class="admin-logo">
-        <img src="../assets/img/log_main.png" alt="Логотип">
+        <img src="../img/log_main.png" alt="Логотип">
         <span class="admin-logo-text">Поможем<br>вместе</span>
     </a>
     <span class="admin-badge">Администратор</span>

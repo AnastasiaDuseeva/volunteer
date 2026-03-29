@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Генерируем уникальное имя чтобы файлы не перезаписывали друг друга
             $newName   = uniqid('event_') . '.' . $ext;
-            $uploadDir = __DIR__ . '/../assets/events/';
+            $uploadDir = __DIR__ . '/../events/';
 
             // Создаём папку если её нет
             if (!is_dir($uploadDir)) {
@@ -50,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (move_uploaded_file($file['tmp_name'], $uploadDir . $newName)) {
                 // В базу сохраняем относительный путь
-                $imagePath = 'assets/events/' . $newName;
+                $imagePath = '/events/' . $newName;
             } else {
-                $errors['photo'] = 'Не удалось сохранить файл. Проверь права на папку assets/events/';
+                $errors['photo'] = 'Не удалось сохранить файл. Проверь права на папку /events/';
             }
         }
     }
@@ -95,13 +95,13 @@ $categories = $db->query("SELECT id, name FROM event_categories ORDER BY name")-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Создать мероприятие — Администратор</title>
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
     <a href="index.php" class="admin-logo">
-        <img src="../assets/img/log_main.png" alt="Логотип">
+        <img src="../img/log_main.png" alt="Логотип">
         <span class="admin-logo-text">Поможем<br>вместе</span>
     </a>
     <span class="admin-badge">Администратор</span>

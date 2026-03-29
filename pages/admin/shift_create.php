@@ -64,13 +64,13 @@ $events = $db->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Создать смены — Администратор</title>
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
     <a href="index.php" class="admin-logo">
-        <img src="../assets/img/log_main.png" alt="Логотип">
+        <img src="../img/log_main.png" alt="Логотип">
         <span class="admin-logo-text">Поможем<br>вместе</span>
     </a>
     <span class="admin-badge">Администратор</span>
