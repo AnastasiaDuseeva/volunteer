@@ -83,7 +83,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
             </a>
             <nav class="button-header">
                 <a href="../pages/events.php">Мероприятия</a>
-                <a href="../pages/volunteers.php">Волонтеры</a>
+                <a href="../pages/list_of_val.php">Волонтеры</a>
             </nav>
             <div class="header-actions">
                 <button class="btn-icon" title="Поиск" onclick="window.location.href='search.php'">
@@ -102,7 +102,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
                     </button> 
                 <?php else: ?>
                     <a href="login.php" class="btn-login"> 
-                        <img src="img/log_main.png" alt="Login" width="20" height="20">
+                        <img src="../img/log_main.png" alt="Login" width="20" height="20">
                         Войти
                     </a>
                 <?php endif; ?>
@@ -146,7 +146,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
                         $fullName = h($v['last_name']) . ' ' . h($v['first_name'])
                                 . ($v['middle_name'] ? ' ' . h($v['middle_name']) : '');
                     ?>
-                    <a href="volunteer.php?id=<?= (int)$v['user_id'] ?>" class="volunteer-card">
+                    <a ?id=<?= (int)$v['user_id'] ?>" class="volunteer-card">
                         <div class="vol-info">
                             <div class="vol-name"><?= $fullName ?></div>
                             <?php if ($v['city']): ?>
