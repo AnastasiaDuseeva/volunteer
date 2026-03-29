@@ -246,8 +246,7 @@ function isShiftPast($date, $timeEnd)
                                 <p>Смены пока не добавлены.</p>
                             <?php endif; ?>
                         </div>
-
-                        <a href="../pages/login.php" class="signup-btn">Войти, чтобы записаться</a>
+                        <a href="../pages/login.php" class="signup-register">Войти, чтобы записаться</a>
                     <?php endif; ?>
                 </aside>
 
