@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #D5D5D5 100%);
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 20px;
+}
+
+.login-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    padding: 40px 40px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    margin: auto;
+}
+
+/* ── Шапка ── */
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 12px;
+    transition: opacity 0.2s;
+}
+
+.back:hover {
+    opacity: 0.75;
+}
+
+.back img {
+    display: block;
+}
+
+.title {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 2.1rem;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+/* ── Блок формы ── */
+.form-wrapper {
+    width: 100%;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+/* ── Форма ── */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #d1d9e6;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    background: #fafcff;
+    color: #2c3e50;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+    background: white;
+}
+
+.input-group input::placeholder {
+    color: #94a3b8;
+}
+
+/* Поле даты — убираем стандартную иконку в Chrome/Edge */
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+/* ── Ошибки ── */
+.error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.error-message ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.error-message ul li {
+    margin-bottom: 2px;
+}
+
+/* Встроенная ошибка подтверждения пароля */
+span.error-message {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: -6px;
+    font-size: 0.82rem;
+    color: #e53e3e;
+    text-align: left;
+}
+
+/* ── Кнопка ── */
+.btn-login {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 8px;
+    letter-spacing: 0.01em;
+}
+
+.btn-login:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ── Ссылки ── */
+.register-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+    color: #2563eb;
+}
+
+/* ── Адаптив ── */
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .login-container {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .input-group input {
+        padding: 13px 15px;
+        font-size: 0.97rem;
+    }
+
+    .btn-login {
+        font-size: 1rem;
+        padding: 14px;
+    }
+}
