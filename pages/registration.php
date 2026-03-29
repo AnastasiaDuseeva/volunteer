@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="login-container">
         <div class="logo-wrapper">
             <a href="index.php" class="back">
-                <img src=".../img/img/log_main.png" alt="Login" width="70" height="70">
+                <img src="../img/log_main.png" alt="Login" width="70" height="70">
             </a>
             <h1 class="title">Поможем<br>вместе</h1> 
 
