@@ -1,0 +1,956 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --blue:        #4A7FC1;
+    --blue-light:  #7BAEE0;
+    --blue-dark:   #2C5F9A;
+    --blue-pale:   #EBF2FB;
+    --gray-bg:     #F4F5F7;
+    --gray-mid:    #D5D5D5;
+    --gray-border: #E2E4E8;
+    --gray-dark:   #888;
+    --text-dark:   #1A1A2E;
+    --text-body:   #444;
+    --white:       #fff;
+    --red:         #E05252;
+    --red-pale:    #FDEAEA;
+    --green:       #3DAA6A;
+    --green-pale:  #E7F7EE;
+    --radius:      16px;
+    --radius-sm:   10px;
+    --radius-xs:   6px;
+    --shadow:      0 2px 12px rgba(26,26,46,.08);
+    --shadow-md:   0 4px 24px rgba(26,26,46,.12);
+    --header-h:    64px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--gray-bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* хэдер*/
+.admin-header {
+    height: var(--header-h);
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.admin-logo img {
+    width: 36px;
+    height: 36px;
+}
+
+.admin-logo-text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.1;
+}
+
+/* Метка «АДМИНИСТРАТОР»*/
+.admin-badge {
+    background: var(--blue);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 99px;
+    flex-shrink: 0;
+}
+
+.admin-header-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-left: 8px;
+}
+
+/* Кнопка «Выйти» */
+.admin-header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border: 1.5px solid var(--gray-mid);
+    border-radius: var(--radius-sm);
+    background: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-body);
+    cursor: pointer;
+    transition: all .18s;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background: var(--red-pale);
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.admin-main {
+    flex: 1;
+    padding: 40px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page-heading {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 32px;
+}
+
+.admin-sections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.admin-section {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius);
+    padding: 28px 24px 24px;
+    box-shadow: var(--shadow);
+}
+
+.section-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--blue-pale);
+}
+
+.section-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all .18s;
+    text-decoration: none;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.section-btn:last-child {
+    margin-bottom: 0;
+}
+
+.section-btn:hover {
+    background: var(--blue-pale);
+    border-color: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.btn-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--blue-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background .18s;
+}
+
+.section-btn:hover .btn-icon-wrap {
+    background: var(--blue-light);
+}
+
+.btn-icon-wrap svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--blue);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    transition: stroke .18s;
+}
+
+.section-btn:hover .btn-icon-wrap svg {
+    stroke: var(--white);
+}
+
+.admin-footer {
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px solid var(--gray-border);
+    background: var(--white);
+}
+
+.admin-footer a {
+    font-size: 13px;
+    color: var(--gray-dark);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.admin-footer a:hover { color: var(--blue); }
+
+/* СТИЛИ ДЛЯ СТРАНИЦ-СПИСКОВ (events.php, volunteers.php, organizers.php)
+
+/*  поиск + кнопки сверху */
+.list-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.toolbar-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: auto;
+}
+
+/* Поле поиска */
+.search-input {
+    height: 42px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    padding: 0 14px 0 38px;  /* слева место под иконку лупы */
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    width: 240px;
+    background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>") no-repeat 12px center;
+    transition: border-color .18s;
+    color: var(--text-dark);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+/* Фильтры (select) */
+.filter-select {
+    height: 42px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    padding: 0 32px 0 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") no-repeat right 10px center;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: border-color .18s;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+/* Кнопка «+ Добавить» / «Выбрать несколько» */
+.btn-primary {
+    height: 42px;
+    padding: 0 20px;
+    background: var(--blue);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: background .18s;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-primary:hover { background: var(--blue-dark); }
+
+.btn-secondary {
+    height: 42px;
+    padding: 0 18px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-body);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: all .18s;
+    white-space: nowrap;
+}
+
+.btn-secondary:hover {
+    background: var(--gray-bg);
+    border-color: var(--gray-mid);
+}
+
+/* Кнопка-корзина (появляется при выборе нескольких) */
+.btn-delete-selected {
+    height: 42px;
+    padding: 0 18px;
+    background: var(--red-pale);
+    border: 1.5px solid var(--red);
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--red);
+    cursor: pointer;
+    display: none; /* скрыта по умолчанию, JS показывает */
+    align-items: center;
+    gap: 7px;
+    transition: background .18s;
+}
+
+.btn-delete-selected.visible {
+    display: flex;
+}
+
+.btn-delete-selected:hover { background: var(--red); color: var(--white); }
+
+/* ТАБЛИЦА СПИСКА  */
+.list-table-wrap {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius);
+    overflow: hidden;  /* Скрывает переполнение для стиля */
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.list-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.list-table th {
+    background: var(--gray-bg);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--gray-dark);
+    border-bottom: 1px solid var(--gray-border);
+}
+
+/* Колонка чекбокса — узкая */
+.list-table th:first-child,
+.list-table td:first-child {
+    width: 44px;
+    text-align: center;
+    padding-left: 16px;
+    padding-right: 0;
+}
+
+/* Колонка действий (три точки) — узкая */
+.list-table th:last-child,
+.list-table td:last-child {
+    width: 52px;
+    text-align: center;
+}
+
+.list-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--gray-border);
+    vertical-align: middle;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.list-table tr:last-child td {
+    border-bottom: none;
+}
+
+.list-table tr:hover td {
+    background: var(--blue-pale);
+}
+
+/* Строка выбрана чекбоксом */
+.list-table tr.selected td {
+    background: #EBF2FB;
+}
+
+/* Чекбокс */
+.row-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--blue);
+    cursor: pointer;
+}
+
+/* Бейджи статусов */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge-open   { background: var(--green-pale); color: var(--green); }
+.badge-closed { background: var(--gray-bg);    color: var(--gray-dark); }
+.badge-active { background: var(--blue-pale);  color: var(--blue-dark); }
+
+/*  КНОПКА «ТРИ ТОЧКИ» И ВЫПАДАЮЩЕЕ МЕНЮ */
+.actions-cell {
+    position: relative;
+}
+
+.btn-dots {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: background .15s;
+    color: var(--gray-dark);
+}
+
+.btn-dots:hover { background: var(--gray-bg); color: var(--text-dark); }
+
+.btn-dots svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+    position: fixed;  /* ВЕРНУЛИ fixed вместо absolute */
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    min-width: 180px;
+    z-index: 10000;  /* Очень высокий z-index */
+    display: none;
+    overflow: hidden;
+}
+
+.dropdown-menu.open { display: block; }
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .12s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.dropdown-item:hover { background: var(--gray-bg); }
+
+.dropdown-item.danger { color: var(--red); }
+.dropdown-item.danger:hover { background: var(--red-pale); }
+
+.dropdown-item svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+/* СТИЛИ ДЛЯ ФОРМ (event_create.php, shift_create.php, organizer_add.php) */
+
+.form-card {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    max-width: 760px;
+    box-shadow: var(--shadow);
+}
+
+.form-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: var(--text-dark);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.form-row.full { grid-template-columns: 1fr; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-body);
+    letter-spacing: .02em;
+}
+
+.form-label .required {
+    color: var(--red);
+    margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--white);
+    transition: border-color .18s;
+    resize: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,127,193,.12);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--gray-mid); }
+
+.form-select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+}
+
+.form-textarea { min-height: 120px; }
+
+/* Поле загрузки фото */
+.upload-area {
+    border: 2px dashed var(--gray-mid);
+    border-radius: var(--radius-sm);
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .18s, background .18s;
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: var(--blue);
+    background: var(--blue-pale);
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.upload-icon { margin-bottom: 8px; }
+
+.upload-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--gray-dark);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.upload-text { font-size: 14px; color: var(--gray-dark); }
+.upload-hint { font-size: 12px; color: var(--gray-mid); margin-top: 4px; }
+
+/* Блок добавления задач волонтёра */
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.task-item .form-input { flex: 1; }
+
+.btn-remove-task {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-xs);
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all .15s;
+    color: var(--gray-dark);
+}
+
+.btn-remove-task:hover {
+    background: var(--red-pale);
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.btn-remove-task svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.btn-add-task {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1.5px dashed var(--blue-light);
+    border-radius: var(--radius-sm);
+    background: var(--blue-pale);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.btn-add-task:hover {
+    background: var(--blue-light);
+    color: var(--white);
+    border-style: solid;
+}
+
+/* Строки добавления смен */
+.shifts-rows { display: flex; flex-direction: column; gap: 12px; }
+
+.shift-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr 120px 36px;
+    gap: 10px;
+    align-items: end;
+}
+
+.btn-remove-shift {
+    width: 36px;
+    height: 42px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s;
+    color: var(--gray-dark);
+}
+
+.btn-remove-shift:hover {
+    background: var(--red-pale);
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.btn-remove-shift svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+}
+
+/* Кнопки формы */
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-border);
+}
+
+.btn-submit {
+    padding: 12px 32px;
+    background: var(--blue);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    transition: background .18s;
+}
+
+.btn-submit:hover { background: var(--blue-dark); }
+
+.btn-cancel {
+    padding: 12px 24px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-body);
+    cursor: pointer;
+    transition: all .15s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-cancel:hover { background: var(--gray-bg); }
+
+/*  ССЫЛКА «НАЗАД»  */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-bottom: 20px;
+    transition: color .15s;
+}
+
+.back-link:hover { color: var(--blue); }
+
+.back-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* МОДАЛЬНОЕ ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,26,46,.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 36px 32px 28px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.modal-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--red-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.modal-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--red);
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.modal-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.modal-text {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-modal-cancel {
+    padding: 10px 24px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.btn-modal-cancel:hover { background: var(--gray-bg); }
+
+.btn-modal-confirm {
+    padding: 10px 24px;
+    background: var(--red);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.btn-modal-confirm:hover { background: #c0392b; }
+
+/*АДАПТИВ  */
+@media (max-width: 1024px) {
+    .admin-sections { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .admin-main { padding: 24px 16px; }
+    .admin-header { padding: 0 20px; }
+    .admin-sections { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .list-toolbar { flex-direction: column; align-items: stretch; }
+    .shift-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* Для сруглённых углов таблиц*/
+.list-table thead tr:first-child th:first-child {
+    border-radius: var(--radius) 0 0 0;
+}
+.list-table thead tr:first-child th:last-child {
+    border-radius: 0 var(--radius) 0 0;
+}
