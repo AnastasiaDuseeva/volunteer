@@ -151,7 +151,7 @@ function isShiftPast($date, $timeEnd)
 
             <nav class="button-header">
                 <a href="../pages/events.php">Мероприятия</a>
-                <a href="../pages/volunteers.php">Волонтеры</a>
+                <a href="../pages/list_of_val.php">Волонтеры</a>
             </nav>
 
             <div class="header-actions">
