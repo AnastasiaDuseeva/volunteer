@@ -144,7 +144,7 @@ function formatEventDate(?string $startDate, ?string $endDate): string
                     </button> 
                 <?php else: ?>
                     <a href="login.php" class="btn-login"> 
-                        <img src="img/log_main.png" alt="Login" width="20" height="20">
+                        <img src="../img/log_main.png" alt="Login" width="20" height="20">
                         Войти
                     </a>
                 <?php endif; ?>
