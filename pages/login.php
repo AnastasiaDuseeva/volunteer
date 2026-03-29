@@ -9,7 +9,7 @@ if (isLoggedIn()) {
             header('Location: ../pages/admin/index.php');
             break;
         case 'ORGANIZER':
-            header('Location: ../pages/organizater.php');
+            header('Location: ../pages/index_org.php');
             break;
         case 'VOLUNTEER':
         default:
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             header('Location: index.php');
                             break;
                         case 'ORGANIZER':
-                            header('Location: org/organizater.php');
+                            header('Location: index_org.php');
                             break;
                         case 'VOLUNTEER':
                         default:
