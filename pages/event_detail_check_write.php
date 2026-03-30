@@ -28,11 +28,15 @@ if (empty($shiftIds)) {
     exit;
 }
 
-// Функция проверки, прошла ли смена
-function isShiftPastAction($date, $timeEnd)
+/*Запрещает запись за 24 часа до начала смены, в момент начала смены, 
+во время смены, после окончания смены. Запрещает отмену за сутки*/
+
+function isActionClosed(string $date, string $timeStart): bool
 {
-    $endDateTime = strtotime($date . ' ' . $timeEnd);
-    return $endDateTime < time();
+    $shiftStart = strtotime($date . ' ' . $timeStart);
+    $deadline = strtotime('-1 day', $shiftStart);
+
+    return time() >= $deadline;
 }
 
 $placeholders = implode(',', array_fill(0, count($shiftIds), '?'));
@@ -42,7 +46,7 @@ try {
 
     // Загружаем все выбранные смены сразу
     $stmtShifts = $pdo->prepare("
-        SELECT id, event_id, shift_date, time_end, capacity, status
+        SELECT id, event_id, shift_date, time_start, time_end, capacity, status
         FROM shifts
         WHERE event_id = ?
           AND id IN ($placeholders)
@@ -115,20 +119,13 @@ try {
         $existingRegistration = $existingRegistrations[$shiftId] ?? null;
         $registeredCount = $registeredCounts[$shiftId] ?? 0;
 
-        if ($action === 'register') {
-            if ($shift['status'] !== 'ACTIVE') {
-                continue;
-            }
-
-            if (isShiftPastAction($shift['shift_date'], $shift['time_end'])) {
-                continue;
-            }
-
-            if ($existingRegistration && $existingRegistration['status'] === 'ACTIVE') {
-                continue;
-            }
-
-            if ($registeredCount >= (int)$shift['capacity']) {
+         if ($action === 'register') {
+            if (
+                $shift['status'] !== 'ACTIVE' ||
+                isActionClosed($shift['shift_date'], $shift['time_start']) ||
+                ($existingRegistration && $existingRegistration['status'] === 'ACTIVE') ||
+                $registeredCount >= (int)$shift['capacity']
+            ) {
                 continue;
             }
 
@@ -138,16 +135,19 @@ try {
                 $stmtInsert->execute([$shiftId, $currentUserId]);
             }
 
-            $registeredCounts[$shiftId] = $registeredCount + 1;
+            continue;
         }
 
         if ($action === 'cancel') {
-            if (!$existingRegistration || $existingRegistration['status'] !== 'ACTIVE') {
+            if (
+                !$existingRegistration ||
+                $existingRegistration['status'] !== 'ACTIVE' ||
+                isActionClosed($shift['shift_date'], $shift['time_start'])
+            ) {
                 continue;
             }
 
             $stmtCancel->execute([$existingRegistration['id']]);
-            $registeredCounts[$shiftId] = max(0, $registeredCount - 1);
         }
     }
 
