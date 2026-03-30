@@ -48,7 +48,7 @@ $email = !empty($profileUser['email']) ? $profileUser['email'] : 'Email не у�
 $userIdText = 'Ваш ID: ' . (int)$profileUser['id'];
 ?>
 
-<div class="profile-overlay" id="profileOverlay"></div>
+<div class="profile-overlay" id="profileOverlay">
 
 <aside class="profile-drawer" id="profileDrawer">
     <button type="button" class="profile-drawer-close" id="profileMenuClose" aria-label="Закрыть меню">
@@ -67,10 +67,12 @@ $userIdText = 'Ваш ID: ' . (int)$profileUser['id'];
     </div>
 
     <nav class="profile-drawer-nav">
-        <a href="my_events.php" class="profile-drawer-link"><img src="../img/profile/icon_my_event.png" alt="мероприятие">Мои мероприятия</a>
-        <a href="history.php" class="profile-drawer-link"><img src="../img/profile/icon_history_event.png" alt="история">История мероприятий</a>
-        <a href="settings.php" class="profile-drawer-link"><img src="../img/profile/icon_settings.png" alt="настройки">Настройки</a>
-        <a href="logout.php" class="profile-drawer-back">
+        <a href="../pages/my_event.php" class="profile-drawer-link"><img src="../img/profile/icon_my_event.png" alt="мероприятие">Мои мероприятия и смены</a>
+        <button type="button" class="profile-drawer-link profile-drawer-link-button" id="openSettingsModal">
+            <img src="../img/profile/icon_settings.png" alt="настройки">
+            Настройки
+        </button>
+        <a href="../pages/logout.php" class="profile-drawer-back">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
                 <polyline points="16 17 21 12 16 7"/>
@@ -80,6 +82,105 @@ $userIdText = 'Ваш ID: ' . (int)$profileUser['id'];
         </a>  
     </nav>
 </aside>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО НАСТРОЕК -->
+<div class="settings-modal-overlay" id="settingsModalOverlay"></div>
+
+<div class="settings-modal" id="settingsModal">
+    <div class="settings-modal-header">
+        <h3>Редактирование профиля</h3>
+        <button type="button" class="settings-modal-close" id="closeSettingsModal" aria-label="Закрыть">
+            ×
+        </button>
+    </div>
+
+    <form action="../pages/update_volonteer_profile.php" method="POST" class="settings-form">
+    <!--Скрытое поле, которое определяет с какой странице была открыта форма-->
+    <input type="hidden" name="redirect_url" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+        <div class="settings-form-group">
+            <label for="last_name">Фамилия</label>
+            <input 
+                type="text" 
+                id="last_name" 
+                name="last_name"
+                value="<?php echo htmlspecialchars($profileUser['last_name'] ?? ''); ?>"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="settings-form-group">
+            <label for="first_name">Имя</label>
+            <input 
+                type="text" 
+                id="first_name" 
+                name="first_name"
+                value="<?php echo htmlspecialchars($profileUser['first_name'] ?? ''); ?>"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="settings-form-group">
+            <label for="middle_name">Отчество</label>
+            <input 
+                type="text" 
+                id="middle_name" 
+                name="middle_name"
+                value="<?php echo htmlspecialchars($profileUser['middle_name'] ?? ''); ?>"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="settings-form-group">
+            <label for="birth_date">Дата рождения</label>
+            <input 
+                type="date" 
+                id="birth_date" 
+                name="birth_date"
+                value="<?php echo htmlspecialchars($profileUser['birth_date'] ?? ''); ?>"
+            >
+        </div>
+
+        <div class="settings-form-group">
+            <label for="city">Город</label>
+            <input 
+                type="text" 
+                id="city" 
+                name="city"
+                value="<?php echo htmlspecialchars($profileUser['city'] ?? ''); ?>"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="settings-form-group">
+            <label for="phone">Телефон</label>
+            <input 
+                type="text" 
+                id="phone" 
+                name="phone"
+                value="<?php echo htmlspecialchars($profileUser['phone'] ?? ''); ?>"
+                maxlength="30"
+            >
+        </div>
+
+        <div class="settings-form-group">
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email"
+                value="<?php echo htmlspecialchars($profileUser['email'] ?? ''); ?>"
+                maxlength="255"
+                required
+            >
+        </div>
+
+        <div class="settings-form-actions">
+            <button type="button" class="settings-cancel-btn" id="cancelSettingsModal">Отмена</button>
+            <button type="submit" class="settings-save-btn">Сохранить</button>
+        </div>
+    </form>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -88,19 +189,53 @@ document.addEventListener('DOMContentLoaded', function () {
     const drawer = document.getElementById('profileDrawer');
     const overlay = document.getElementById('profileOverlay');
 
-    if (!openBtn || !closeBtn || !drawer || !overlay) return;
+    const openSettingsBtn = document.getElementById('openSettingsModal');
+    const closeSettingsBtn = document.getElementById('closeSettingsModal');
+    const cancelSettingsBtn = document.getElementById('cancelSettingsModal');
+    const settingsModal = document.getElementById('settingsModal');
+    const settingsModalOverlay = document.getElementById('settingsModalOverlay');
 
-    openBtn.addEventListener('click', function () {
-        drawer.classList.add('open');
-        overlay.classList.add('open');
-    });
+    if (openBtn && closeBtn && drawer && overlay) {
+        openBtn.addEventListener('click', function () {
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+        });
 
-    function closeMenu() {
-        drawer.classList.remove('open');
-        overlay.classList.remove('open');
+        function closeMenu() {
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
     }
 
-    closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
+    function openSettingsModal() {
+        settingsModal.classList.add('open');
+        settingsModalOverlay.classList.add('open');
+    }
+
+    function closeSettingsModalFunc() {
+        settingsModal.classList.remove('open');
+        settingsModalOverlay.classList.remove('open');
+    }
+
+    if (openSettingsBtn && settingsModal && settingsModalOverlay) {
+        openSettingsBtn.addEventListener('click', function () {
+            openSettingsModal();
+        });
+    }
+
+    if (closeSettingsBtn) {
+        closeSettingsBtn.addEventListener('click', closeSettingsModalFunc);
+    }
+
+    if (cancelSettingsBtn) {
+        cancelSettingsBtn.addEventListener('click', closeSettingsModalFunc);
+    }
+
+    if (settingsModalOverlay) {
+        settingsModalOverlay.addEventListener('click', closeSettingsModalFunc);
+    }
 });
 </script>

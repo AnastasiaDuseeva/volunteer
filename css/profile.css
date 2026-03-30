@@ -118,3 +118,168 @@ nav.profile-drawer-nav {
         max-width: 100%;
     }
 }
+
+/*модальное окно редактирования*/
+.profile-drawer-link-button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: inherit;
+}
+
+/* Затемнение фона */
+.settings-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 9998;
+}
+
+.settings-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Само модальное окно */
+.settings-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 100%;
+    max-width: 520px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 9999;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.settings-modal.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Заголовок */
+.settings-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.settings-modal-header h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #222;
+}
+
+.settings-modal-close {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+}
+
+.settings-modal-close:hover {
+    color: #111;
+}
+
+/* Форма */
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.settings-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.settings-form-group input {
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* Кнопки */
+.settings-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.settings-cancel-btn,
+.settings-save-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.2s ease;
+    background: #f1f1f1;
+    color: #000000;
+}
+
+.settings-cancel-btn:hover {
+    background: #e7e7e7;
+}
+
+.settings-save-btn:hover {
+    background: #4A7FC1;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .settings-modal {
+        width: calc(100% - 24px);
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .settings-modal-header h3 {
+        font-size: 20px;
+    }
+
+    .settings-form-actions {
+        flex-direction: column;
+    }
+
+    .settings-cancel-btn,
+    .settings-save-btn {
+        width: 100%;
+    }
+}
