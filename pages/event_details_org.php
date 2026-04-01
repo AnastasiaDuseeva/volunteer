@@ -86,7 +86,7 @@ $totalCapacity   = 0;
 // ── Блок организатора: волонтёры по сменам ──────────────────────────
 $isOrganizer = $isLoggedIn && ($_SESSION['user_role'] ?? '') === 'ORGANIZER';
 
-$stmtOwner = $pdo->prepare("SELECT created_by FROM events WHERE id = :id");
+$stmtOwner = $pdo->prepare("SELECT organizer_id FROM events WHERE id = :id");
 $stmtOwner->execute([':id' => $eventId]);
 $isOwner = (int)$stmtOwner->fetchColumn() === $currentUserId && $isOrganizer;
 
