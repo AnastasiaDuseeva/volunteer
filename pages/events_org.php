@@ -55,7 +55,7 @@ $sql = "
         c.name AS category_name
     FROM events e
     LEFT JOIN event_categories c ON e.category_id = c.id
-    WHERE e.created_by = :user_id
+    WHERE e.organizer_id = :user_id
 ";
 $params = [];
 
@@ -213,7 +213,7 @@ function formatEventDate(?string $startDate, ?string $endDate): string
                     <div class="filter-actions">
                         <button type="submit" class="find-btn">Найти</button>
                         <?php if ($hasActiveFilters): ?>
-                            <button type="button" class="find-btn" onclick="window.location.href='events.php'">Сбросить</button>
+                            <button type="button" class="find-btn" onclick="window.location.href='events_org.php'">Сбросить</button>
                         <?php endif; ?>
                     </div>
                 </form>
@@ -222,7 +222,7 @@ function formatEventDate(?string $startDate, ?string $endDate): string
            <div class="events-list">
            <?php foreach ($events as $event):?>
                 <article class="event-card">
-                    <a href="event_details.php?id=<?=(int)$event['id']?>" class="event-image">
+                    <a href="event_details_org.php?id=<?=(int)$event['id']?>" class="event-image">
                         <img src="../<?=htmlspecialchars($event['image_path'])?>" alt="<?= htmlspecialchars($event['title']) ?>">
                     </a>
 
@@ -258,9 +258,9 @@ function formatEventDate(?string $startDate, ?string $endDate): string
         </main>
     </div>
 <footer>
-    <a href="privacy.php">Политика конфиденциальности</a>
-    <a href="terms.php">Политика использования</a>
-    <a href="requisites.php">Реквизиты</a>
+    <a href="privacy_org.php">Политика конфиденциальности</a>
+    <a href="terms_org.php">Политика использования</a>
+    <a href="requisites_org.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 </body>
