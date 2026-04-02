@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'config.php';
-include 'profile.php';
+include 'profile_org.php';
 // ─── Parameters ──────────────────────────────────────────────────────────────
 $search = trim($_GET['search'] ?? '');
 $page   = max(1, (int)($_GET['page'] ?? 1));
@@ -82,8 +82,8 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
                 <span class="logo-text">Поможем<br>вместе</span>
             </a>
             <nav class="button-header">
-                <a href="../pages/events.php">Мероприятия</a>
-                <a href="../pages/list_of_val.php">Волонтеры</a>
+                <a href="../pages/events_org.php">Мероприятия</a>
+                <a href="../pages/list_val_org.php">Волонтеры</a>
             </nav>
             <div class="header-actions">
                 <button class="btn-icon" title="Поиск" onclick="window.location.href='search.php'">
@@ -209,9 +209,9 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
     `</main>
 </div>
 <footer>
-    <a href="privacy.php">Политика конфиденциальности</a>
-    <a href="terms.php">Политика использования</a>
-    <a href="requisites.php">Реквизиты</a>
+    <a href="../pages/privacy_org.php">Политика конфиденциальности</a>
+    <a href="../pages/terms_org.php">Политика использования</a>
+    <a href="../pages/requisites_org.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 </body>

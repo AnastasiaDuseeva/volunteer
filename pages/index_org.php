@@ -71,7 +71,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
             <p>внеси свой вклад в общее дело</p>
             <div class="hero-btns">
 
-                <a href="../pages/main_volunteers.php" class="btn-filled" style="padding: 14px 165px;">Хочу помочь</a>
+                <a href="../pages/requisites_org.php" class="btn-filled" style="padding: 14px 165px;">Хочу помочь</a>
             </div>
         </div>
 
@@ -99,9 +99,9 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
-    <a href="../pages/privacy.php">Политика конфиденциальности</a>
-    <a href="../pages/terms.php">Политика использования</a>
-    <a href="../pages/requisites.php">Реквизиты</a>
+    <a href="../pages/privacy_org.php">Политика конфиденциальности</a>
+    <a href="../pages/terms_org.php">Политика использования</a>
+    <a href="../pages/requisites_org.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 <script>

@@ -258,9 +258,9 @@ function formatEventDate(?string $startDate, ?string $endDate): string
         </main>
     </div>
 <footer>
-    <a href="privacy_org.php">Политика конфиденциальности</a>
-    <a href="terms_org.php">Политика использования</a>
-    <a href="requisites_org.php">Реквизиты</a>
+    <a href="../pages/privacy_org.php">Политика конфиденциальности</a>
+    <a href="../pages/terms_org.php">Политика использования</a>
+    <a href="../pages/requisites_org.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 </body>
