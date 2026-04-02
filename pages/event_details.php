@@ -140,7 +140,6 @@ function isShiftPast($date, $timeEnd)
     <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
-    <div class="page">
         <header>
             <a href="../pages/index.php" class="logo">
                 <div class="logo-icon" >
@@ -177,8 +176,9 @@ function isShiftPast($date, $timeEnd)
                     </a>
                 <?php endif; ?>
             </div>
-        </header>        
-
+        </header>  
+        
+    <div class="page">
         <main>
             <a href="../pages/events.php" class="back-link">← Назад</a>
 
@@ -341,9 +341,9 @@ function isShiftPast($date, $timeEnd)
     <?php endif; ?>
 </body>
 <footer>
-    <a href="privacy.php">Политика конфиденциальности</a>
-    <a href="terms.php">Политика использования</a>
-    <a href="requisites.php">Реквизиты</a>
+    <a href="../pages/privacy.php">Политика конфиденциальности</a>
+    <a href="../pages/terms.php">Политика использования</a>
+    <a href="../pages/requisites.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 </html>
