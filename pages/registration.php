@@ -225,11 +225,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         const isAllowedKey = allowedKeys.includes(e.key);
                         const isCtrlCmd = e.ctrlKey || e.metaKey; // Ctrl+A, Ctrl+C, Ctrl+V и т.д.
                         
-                        // Запрещаем удалять "+7 "
-                        if ((e.key === 'Backspace' || e.key === 'Delete') && this.value === '+7 ') {
-                            e.preventDefault();
-                            return;
-                        }
+                        phoneInput.addEventListener('keydown', function(e) {
+                            const allowedKeys = [
+                                'Backspace', 'Delete', 'Tab', 
+                                'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+                                'Home', 'End'
+                            ];
+                            
+                            const isNumber = (e.key >= '0' && e.key <= '9');
+                            const isAllowedKey = allowedKeys.includes(e.key);
+                            const isCtrlCmd = e.ctrlKey || e.metaKey;
+
+                            // Разрешаем удаление всегда
+                            if (e.key === 'Backspace' || e.key === 'Delete') {
+                                return;
+                            }
+
+                            if (!isNumber && !isAllowedKey && !isCtrlCmd) {
+                                e.preventDefault();
+                            }
+                        });
                         
                         // Блокируем всё кроме цифр и разрешённых клавиш
                         if (!isNumber && !isAllowedKey && !isCtrlCmd) {
