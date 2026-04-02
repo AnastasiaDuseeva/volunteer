@@ -379,6 +379,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>
         </div>
     </div>
+<script>
+function formatName(value) {
+    // Убираем всё кроме букв и дефиса
+    value = value.replace(/[^a-zA-Zа-яА-ЯёЁ-]/g, '');
 
+    // Делаем "Иванов", "Петров-Сидоров"
+    return value
+        .toLowerCase()
+        .split('-')
+        .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+        .join('-');
+}
+
+function attachNameValidation(input) {
+    // Блок ввода лишних символов
+    input.addEventListener('keydown', function(e) {
+        const allowedKeys = [
+            'Backspace', 'Delete', 'Tab',
+            'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+            'Home', 'End'
+        ];
+
+        const isLetter = /^[a-zA-Zа-яА-ЯёЁ-]$/.test(e.key);
+        const isAllowedKey = allowedKeys.includes(e.key);
+        const isCtrlCmd = e.ctrlKey || e.metaKey;
+
+        if (!isLetter && !isAllowedKey && !isCtrlCmd) {
+            e.preventDefault();
+        }
+    });
+
+    // Очистка и форматирование при вводе
+    input.addEventListener('input', function() {
+        const formatted = formatName(this.value);
+        this.value = formatted;
+    });
+
+    // Обработка вставки
+    input.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const pasted = (e.clipboardData || window.clipboardData).getData('text');
+        this.value = formatName(pasted);
+    });
+}
+
+// Подключаем к полям
+attachNameValidation(document.querySelector('input[name="first_name"]'));
+attachNameValidation(document.querySelector('input[name="last_name"]'));
+attachNameValidation(document.querySelector('input[name="middle_name"]'));
+</script>
 </body>
 </html>
