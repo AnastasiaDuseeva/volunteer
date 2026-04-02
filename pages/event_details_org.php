@@ -192,7 +192,7 @@ function isShiftPast($date, $timeEnd)
 
     <div class="page">
         <main>
-            <a href="../pages/events.php" class="back-link">← Назад</a>
+            <a href="../pages/events_org.php" class="back-link">← Назад</a>
 
             <section class="event-details">
                 <aside class="event-left">
@@ -425,9 +425,9 @@ function isShiftPast($date, $timeEnd)
 
 </body>
 <footer>
-    <a href="privacy.php">Политика конфиденциальности</a>
-    <a href="terms.php">Политика использования</a>
-    <a href="requisites.php">Реквизиты</a>
+    <a href="../pages/privacy_org.php">Политика конфиденциальности</a>
+    <a href="../pages/terms_org.php">Политика использования</a>
+    <a href="../pages/requisites_org.php">Реквизиты</a>
     <a href="mailto:info@gmail.com">info@gmail.com</a>
 </footer>
 </html>
