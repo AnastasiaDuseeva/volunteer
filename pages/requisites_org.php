@@ -1,10 +1,13 @@
 <?php
-$pageTitle = 'Реквизиты организации';
 session_start();
-require_once '../config.php';
-include '../pages/profile_org.php';
+require_once 'config.php';
+requireRole('ORGANIZER');
+$userId = (int)$_SESSION['user_id'];
+include 'profile_org.php';
+
 // Проверка авторизации
 $isLoggedIn = isLoggedIn();
+
 // Имя пользователя (если залогинен)
 $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 ?>
@@ -16,16 +19,16 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?> — Поможем вместе</title>
     
-    <link rel="stylesheet" href="../assets/css/style_index.css">
-    <link rel="stylesheet" href="../assets/css/style_header_footer.css">
-    <link rel="stylesheet" href="../assets/css/style_policy.css">
-    <link rel="stylesheet" href="../assets/css/profile_org.css">
+    <link rel="stylesheet" href="../css/style_index.css">
+    <link rel="stylesheet" href="../css/style_header_footer.css">
+    <link rel="stylesheet" href="../css/style_policy.css">
+    <link rel="stylesheet" href="../css/profile_org.css">
 
-    <link rel="icon" type="image/png" href="../assets/img/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="../assets/img/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="../assets/img/favicon/site.webmanifest" />
+    <link rel="icon" type="image/png" href="../img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../img/favicon/site.webmanifest" />
 </head>
 
 <body>
@@ -34,7 +37,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 <header>
     <a href="../pages/index_org.php" class="logo">
         <div class="logo-icon" >
-                <img src="../assets/img/log_main.png" alt="Login" width="47" height="47">
+                <img src="../img/log_main.png" alt="Login" width="47" height="47">
         </div>
         <span class="logo-text">Поможем
 вместе</span>
@@ -61,8 +64,8 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
                         <?= $userName ?>
                     </button> 
                 <?php else: ?>
-                    <a href="/login.php" class="btn-login"> 
-                        <img src="../assets/img/log_main.png" alt="Login" width="20" height="20">
+                    <a href="login.php" class="btn-login"> 
+                        <img src="../img/log_main.png" alt="Login" width="20" height="20">
                         Войти
                     </a>
                 <?php endif; ?>
