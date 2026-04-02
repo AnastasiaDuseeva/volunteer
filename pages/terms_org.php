@@ -19,7 +19,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
     <link rel="stylesheet" href="../assets/css/style_index.css">
     <link rel="stylesheet" href="../assets/css/style_header_footer.css">
     <link rel="stylesheet" href="../assets/css/style_policy.css">
-    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/profile_org.css">
 
     <link rel="icon" type="image/png" href="../assets/img/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../assets/img/favicon/favicon.svg" />
@@ -32,7 +32,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 
 <!-- HEADER -->
 <header>
-    <a href="../index_org.php" class="logo">
+    <a href="../pages/index_org.php" class="logo">
         <div class="logo-icon" >
                 <img src="../assets/img/log_main.png" alt="Login" width="47" height="47">
         </div>
