@@ -2,7 +2,7 @@
 
 session_start();
 require_once 'config.php';
-include 'profile.php';
+include '../pages/profile.php';
 
 // Проверка авторизации
 $isLoggedIn = isLoggedIn();
@@ -32,7 +32,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
 
 <!-- ═══════════ HEADER ═══════════ -->
 <header>
-    <a href="../pages/index.php" class="logo">
+    <a href="../index.php" class="logo">
         <div class="logo-icon" >
                 <img src="../img/log_main.png" alt="Login" width="47" height="47">
         </div>
@@ -61,7 +61,7 @@ $userName = $isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
                         <?= $userName ?>
                     </button> 
                 <?php else: ?>
-                    <a href="login.php" class="btn-login"> 
+                    <a href="../pages/login.php" class="btn-login"> 
                         <img src="../img/log_main.png" alt="Login" width="20" height="20">
                         Войти
                     </a>
